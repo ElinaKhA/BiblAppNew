@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BiblApp.AuthorizationPage"
+             Title="AuthPage">
+    <StackLayout Orientation="Vertical" Grid.Row="1" >
+        <StackLayout  Spacing="8" Orientation="Horizontal">
+            <Button x:Name="regbtn" Text="Зарегистрироваться" TextColor="Black" Margin="0,5,0,0" Background="Plum" Clicked="regbtn_Clicked"/>
+            <Button Text="Выйти" TextColor="White" Margin="0,5,0,0" Background="MediumPurple" Clicked="Button_Clicked"/>
+        </StackLayout>
+        <Label x:Name="regLabel" Text="Войдите в аккаунт" FontSize="Large" TextColor="Black" HorizontalOptions="Center" Margin="0,10,0,0"/>
+        <Entry x:Name="login" Placeholder="Логин" TextColor="Black" PlaceholderColor="Black" Margin="0,5,0,0"/>
+        <Entry x:Name="password" Placeholder="Пароль" TextColor="Black" PlaceholderColor="Black" IsPassword="True" Margin="0,5,0,0" />
+        <Button x:Name="kabinetButton" Text="Войти" TextColor="White" Margin="0,5,0,0" Background="DarkSlateBlue" Clicked="kabinetButton_Clicked" />
+        <StackLayout>
+            <Label x:Name="stackLabel"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

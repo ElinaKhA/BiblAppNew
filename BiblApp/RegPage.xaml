@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BiblApp.RegPage"
+             Title="RegPage">
+
+    <StackLayout Orientation="Vertical" Grid.Row="1" >
+        <StackLayout  Spacing="8" Orientation="Horizontal">
+            <Button x:Name="changebtn" Text="Поменять тему" TextColor="Black" Margin="0,5,0,0" Background="Plum" Clicked="Theme_OnButtonClicked"/>
+            <Button x:Name="authbtn" Text="Войти в аккаунт" TextColor="Black" Margin="0,5,0,0" Background="Plum" Clicked="authbtn_Clicked"/>
+            <Button Text="Выйти" TextColor="White" Margin="0,5,0,0" Background="MediumPurple" Clicked="Exit_OnButtonClicked"/>
+        </StackLayout>
+        <Label x:Name="regLabel" Text="Зарегистрируйтесь" FontSize="Large" TextColor="Black" HorizontalOptions="Center" Margin="0,10,0,0"/>
+        <StackLayout>
+            <Label x:Name="header" Text="Выберите роль:" TextColor="Black"/>
+            <Picker x:Name="role" SelectedIndex="0" TextColor="Black">
+                <Picker.Items>
+                    <x:String>Клиент</x:String>
+                    <x:String>Библиотекарь</x:String>
+                    <x:String>Администратор</x:String>
+                </Picker.Items>
+            </Picker>
+        </StackLayout>
+        <Entry x:Name="email" Placeholder="Email" TextColor="Black" PlaceholderColor="Black" Margin="0,5,0,0" Keyboard="Email"/>
+        <Entry x:Name="login" Placeholder="Логин" TextColor="Black" PlaceholderColor="Black" Margin="0,5,0,0"/>
+        <StackLayout Margin="0,5,0,0">
+            <Label x:Name="dateLable" Text="Выберите дату рождения" />
+            <DatePicker Format="D" x:Name="datePic">
+                <DatePicker.MinimumDate>01/01/1940</DatePicker.MinimumDate>
+                <DatePicker.MaximumDate>01/01/2010</DatePicker.MaximumDate>
+            </DatePicker>
+        </StackLayout>
+        <Entry x:Name="phone" Placeholder="Телефон" TextColor="Black" PlaceholderColor="Black" Margin="0,5,0,0" Keyboard="Telephone"/>
+        <Entry x:Name="password" Placeholder="Пароль" TextColor="Black" PlaceholderColor="Black" IsPassword="True" Margin="0,5,0,0" />
+        <Entry  x:Name="confirmPassword" Placeholder="Повторите пароль" TextColor="Black" PlaceholderColor="Black" IsPassword="True" Margin="0,5,0,0"/>
+
+        <Button x:Name="kabinetButton" Text="Зарегистрироваться" TextColor="White" Margin="0,5,0,0" Background="DarkSlateBlue" Clicked="OnButtonClicked" />
+        <StackLayout>
+            <Label x:Name="stackLabel"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
