@@ -58,7 +58,7 @@ namespace BiblApp
         {
             BooksPage page = new BooksPage();
             await Navigation.PushAsync(page);
-            page.DisplayStack();
+           // page.DisplayStack();
         }
         // Переход обратно к регистрации
         private async void GoToBack(object sender, EventArgs e)

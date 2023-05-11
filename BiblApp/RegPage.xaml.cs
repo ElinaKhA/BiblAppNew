@@ -22,9 +22,9 @@ namespace BiblApp
         }
         protected override void OnAppearing()
         {
-            object logino = "";
+           /* object logino = "";
             object passwordo = "";
-            object roleo = "";
+            object roleo = "";*/
             base.OnAppearing();
             if (loaded == false)
             {
@@ -46,15 +46,15 @@ namespace BiblApp
         private async void OnButtonClicked(object sender, System.EventArgs e)
         {
             Button button = (Button)sender;
-            if (login.Text == null)
+            if (login.Text == "")
             {
                 DisplayAlert("Неуспешно", "Введите логин", "Ок");
             }
-            else if (email.Text == null)
+            else if (email.Text == "")
             {
                 DisplayAlert("Неуспешно", "Введите почту", "Ок");
             }
-            else if (password.Text == null || confirmPassword == null)
+            else if (password.Text == "" || confirmPassword.Text == "")
             {
                 DisplayAlert("Неуспешно", "Введите пароль", "Ок");
             }
@@ -62,25 +62,38 @@ namespace BiblApp
             {
                 DisplayAlert("Неуспешно", "Неправильно повторили пароль", "Ок");
             }
-            else if (phone.Text == null)
+            else if (phone.Text == "")
             {
                 DisplayAlert("Неуспешно", "Введите телефон", "Ок");
             }
-            else if (role.SelectedItem == null)
+            else if (role.SelectedItem == "")
             {
                 DisplayAlert("Неуспешно", "Укажите роль", "Ок");
             }
             else
             {
-                string loginb = login.Text;
-                App.Current.Properties["logino"] = loginb;
-                string passwordb = password.Text;
-                App.Current.Properties["passwordo"] = passwordb;                
-                int roleb = role.SelectedIndex;
-                App.Current.Properties["roleo"] = roleb;
+                /*      string loginb = login.Text;
+                      App.Current.Properties["logino"] = loginb;
+                      string passwordb = password.Text;
+                      App.Current.Properties["passwordo"] = passwordb;                
+                      int roleb = role.SelectedIndex;
+                      App.Current.Properties["roleo"] = roleb;*/
+                User user = new User();
+             //   var user = (User)BindingContext;
+              
+
+
 
                 if (role.SelectedIndex==0)
                 {
+                    user.Login = login.Text;
+                    user.Email = email.Text;
+                    user.Phone = phone.Text;
+                    user.Password = password.Text;
+                    user.Birth = datePic.Date;
+                    user.Role = 0;
+
+                    App.Database.SaveItem(user);
                     DisplayAlert("Успешно", "Вы зарегистрировались как клиент", "Ок");
 
                     KabinetPage page = new KabinetPage();
@@ -89,6 +102,14 @@ namespace BiblApp
                 }
                 else if (role.SelectedIndex == 1)
                 {
+                    user.Login = login.Text;
+                    user.Email = email.Text;
+                    user.Phone = phone.Text;
+                    user.Password = password.Text;
+                    user.Birth = datePic.Date;
+                    user.Role = 1;
+                    App.Database.SaveItem(user);
+
                     DisplayAlert("Успешно", "Вы зарегистрировались как библиотекарь", "Ок");
 
                     KabinetPage page = new KabinetPage();
@@ -97,6 +118,14 @@ namespace BiblApp
                 }
                 else if (role.SelectedIndex == 2)
                 {
+                    user.Login = login.Text;
+                    user.Email = email.Text;
+                    user.Phone = phone.Text;
+                    user.Password = password.Text;
+                    user.Birth = datePic.Date;
+                    user.Role = 2;
+                    App.Database.SaveItem(user);
+
                     DisplayAlert("Успешно", "Вы зарегистрировались как администратор", "Ок");
 
                     AdminPage page = new AdminPage();

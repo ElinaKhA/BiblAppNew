@@ -48,7 +48,7 @@ namespace BiblApp
         {
             BooksPage page = new BooksPage();
             await Navigation.PushAsync(page);
-            page.DisplayStack();
+       //     page.DisplayStack();
         }
         private async void GoToForwardAddPhoto(object sender, EventArgs e)
         {

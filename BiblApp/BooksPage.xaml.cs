@@ -12,17 +12,26 @@ namespace BiblApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BooksPage : ContentPage
     {
+        bool loaded = false;
         Label stackLabel;
         public BooksPage()
         {
-            Title = "Page Books";
-            Button backBtn = new Button { Text = "Назад" };
-            backBtn.Clicked += GoToBack;
+            /*   Title = "Page Books";
+               Button backBtn = new Button { Text = "Назад" };
+               backBtn.Clicked += GoToBack;
 
-            stackLabel = new Label();
-            Content = new StackLayout { Children = { backBtn, stackLabel } };
+               stackLabel = new Label();
+               Content = new StackLayout { Children = { backBtn, stackLabel } };*/
+            InitializeComponent();
+
         }
-        protected internal void DisplayStack()
+         protected override void OnAppearing()
+        {
+            booksList.ItemsSource = App.Database.GetBooks().ToList();
+            base.OnAppearing();
+        }
+        /*
+       protected internal void DisplayStack()
         {
             NavigationPage navPage = (NavigationPage)App.Current.MainPage;
             stackLabel.Text = "";
@@ -30,7 +39,7 @@ namespace BiblApp
             {
                 stackLabel.Text += p.Title + "\n";
             }
-        }
+        }*/
         // Переход обратно на Page2
         private async void GoToBack(object sender, EventArgs e)
         {
@@ -40,5 +49,10 @@ namespace BiblApp
          
         }
 
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            AddPage page = new AddPage();
+            await Navigation.PushAsync(page);
+        }
     }
 }

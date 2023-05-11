@@ -46,9 +46,13 @@ namespace BiblApp
 
         private async void kabinetButton_Clicked(object sender, EventArgs e)
         {
-            string log = App.Current.Properties["logino"].ToString();
-            string pass = App.Current.Properties["passwordo"].ToString();
-            int role = (int)App.Current.Properties["roleo"];
+              /*  string log = App.Current.Properties["logino"].ToString();
+                string pass = App.Current.Properties["passwordo"].ToString();
+                int role = (int)App.Current.Properties["roleo"]; */
+         var users = App.Database.GetItems();
+           User user = users.Where(x=> x.Login == login.Text).FirstOrDefault();
+
+           
             if (login.Text == null)
             {
                 DisplayAlert("Неуспешно", "Введите логин", "Ок");
@@ -57,31 +61,33 @@ namespace BiblApp
             {
                 DisplayAlert("Неуспешно", "Введите пароль", "Ок");
             }
-            else if (log != login.Text)
+            else if (user.Login != login.Text)
             {
                 DisplayAlert("Неуспешно", "Неверный логин", "Ок");
             }
-            else if (pass != password.Text)
+            else if (user.Password != password.Text)
             {
                 DisplayAlert("Неуспешно", "Неверный пароль", "Ок");
             }
             else
             {
-                if (role == 0)
+                if (user.Role == 0)
                 {
+                   
                     DisplayAlert("Успешно", "Вы вошли как клиент", "Ок");
                     KabinetPage page = new KabinetPage();
                     await Navigation.PushAsync(page);
                     page.DisplayStack();
                 }
-                else if(role == 1)
+                else if(user.Role == 1)
                 {
+
                     DisplayAlert("Успешно", "Вы вошли как библиотекарь", "Ок");
                     KabinetPage page = new KabinetPage();
                     await Navigation.PushAsync(page);
                     page.DisplayStack();
                 }  
-                else if(role == 2)
+                else if(user.Role == 2)
                 {
                     DisplayAlert("Успешно", "Вы вошли как администратор", "Ок");
                     AdminPage page = new AdminPage();
